@@ -1,5 +1,7 @@
 import bgImg from './assets/background.png';
 import bgMusicFile from './assets/music.ogg';
+import numbersJson from './assets/numbers.json'
+import numberPng from './assets/numbers.png';
 
 export class LoadingScene extends Phaser.Scene {
     constructor() {
@@ -7,7 +9,7 @@ export class LoadingScene extends Phaser.Scene {
     }
 
     preload(): void {
-        this.load.multiatlas('numbers', 'assets/numbers.json', 'assets/');
+        this.load.atlas('numbers', numberPng, numbersJson);
         this.load.image('background', bgImg);
         this.load.audio('music', bgMusicFile);
 

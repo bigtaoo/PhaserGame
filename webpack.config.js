@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+// const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
   const isProd = argv.mode === 'production';
@@ -13,7 +13,7 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         { test: /\.ts$/, use: 'ts-loader', exclude: /node_modules/ },
-        { test: /\.(png|jpg|gif|webp|mp3|wav|ogg)$/i, type: 'asset/resource' },
+        { test: /\.(png|jpg|gif|webp|mp3|wav|ogg|json)$/i, type: 'asset/resource' },
         { test: /\.css$/i, use: ['style-loader', 'css-loader'] },
       ],
     },
@@ -25,21 +25,21 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({ template: './public/index.html' }),
-      new CopyPlugin({
-        patterns: [
-          { from: 'src/assets', to: 'assets' }, // copy all assets to dist/assets
-        ],
-      }),
-      ...(isProd
-        ? [
-            new BrotliPlugin({
-              asset: '[path].br[query]',
-              test: /\.(js|css|html|png|mp3|wav|ogg)$/,
-              threshold: 10240,
-              minRatio: 0.8,
-            }),
-          ]
-        : []),
+    //   new CopyPlugin({
+    //     patterns: [
+    //       { from: 'src/assets', to: 'assets' }, // copy all assets to dist/assets
+    //     ],
+    //   }),
+    //   ...(isProd
+    //     ? [
+    //         new BrotliPlugin({
+    //           asset: '[path].br[query]',
+    //           test: /\.(js|css|html|png|mp3|wav|ogg)$/,
+    //           threshold: 10240,
+    //           minRatio: 0.8,
+    //         }),
+    //       ]
+    //     : []),
     ],
     devServer: {
       static: [
