@@ -16,7 +16,7 @@ export class GameScene extends Phaser.Scene {
             .setDisplaySize(this.scale.width, this.scale.height);
 
         // Player sprite
-        this.player = AssetManager.addImage(this, this.scale.width / 2, this.scale.height / 2, AssetKeys.num1);
+        this.player = AssetManager.addImage(this, this.scale.width / 2, this.scale.height / 2, AssetKeys.num2);
 
         // Background music
         this.bgMusic = this.sound.add(AssetKeys.music, { loop: true, volume: 0.2 });

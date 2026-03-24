@@ -8,12 +8,12 @@ const config: Phaser.Types.Core.GameConfig = {
     height: 600,
     parent: 'game-container',
     scene: [LoadingScene, GameScene],
-    backgroundColor: '#000000',
+    backgroundColor: '#87CEEB',
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
-    physics: { default: 'arcade', arcade: { debug: false } },
+    // physics: { default: 'arcade', arcade: { debug: false } },
 };
 
 // Start game

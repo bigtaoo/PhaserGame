@@ -1,0 +1,151 @@
+{
+  "meta": {
+    "version": "0.6.7"
+  },
+  "savePath": "/Users/wangtao/Desktop/PhaserGame/src/assets",
+  "images": [
+    {
+      "name": "0.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/0.png",
+      "folder": ""
+    },
+    {
+      "name": "1.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/1.png",
+      "folder": ""
+    },
+    {
+      "name": "2.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/2.png",
+      "folder": ""
+    },
+    {
+      "name": "3.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/3.png",
+      "folder": ""
+    },
+    {
+      "name": "4.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/4.png",
+      "folder": ""
+    },
+    {
+      "name": "5.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/5.png",
+      "folder": ""
+    },
+    {
+      "name": "6.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/6.png",
+      "folder": ""
+    },
+    {
+      "name": "7.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/7.png",
+      "folder": ""
+    },
+    {
+      "name": "8.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/8.png",
+      "folder": ""
+    },
+    {
+      "name": "9.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/9.png",
+      "folder": ""
+    },
+    {
+      "name": "Blue.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/Blue.png",
+      "folder": ""
+    },
+    {
+      "name": "brawn.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/brawn.png",
+      "folder": ""
+    },
+    {
+      "name": "clock.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/clock.png",
+      "folder": ""
+    },
+    {
+      "name": "disable.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/disable.png",
+      "folder": ""
+    },
+    {
+      "name": "equa.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/equa.png",
+      "folder": ""
+    },
+    {
+      "name": "green.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/green.png",
+      "folder": ""
+    },
+    {
+      "name": "music.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/music.png",
+      "folder": ""
+    },
+    {
+      "name": "plus.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/plus.png",
+      "folder": ""
+    },
+    {
+      "name": "purple.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/purple.png",
+      "folder": ""
+    },
+    {
+      "name": "select.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/select.png",
+      "folder": ""
+    },
+    {
+      "name": "settings.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/settings.png",
+      "folder": ""
+    },
+    {
+      "name": "sound.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/sound.png",
+      "folder": ""
+    },
+    {
+      "name": "yellow.png",
+      "path": "/Users/wangtao/Desktop/SumQuest/Art/yellow.png",
+      "folder": ""
+    }
+  ],
+  "folders": [],
+  "packOptions": {
+    "textureName": "numbers",
+    "textureFormat": "png",
+    "removeFileExtension": true,
+    "prependFolderName": false,
+    "base64Export": false,
+    "tinify": false,
+    "tinifyKey": "",
+    "scale": 1,
+    "filter": "none",
+    "exporter": "Phaser 3",
+    "fileName": "pack-result",
+    "savePath": "/Users/wangtao/Desktop/PhaserGame/src/assets",
+    "width": 1024,
+    "height": 1024,
+    "fixedSize": true,
+    "powerOfTwo": false,
+    "padding": 2,
+    "extrude": 0,
+    "allowRotation": true,
+    "allowTrim": true,
+    "trimMode": "trim",
+    "alphaThreshold": "0",
+    "detectIdentical": true,
+    "packer": "MaxRectsBin",
+    "packerMethod": "BestShortSideFit"
+  }
+}
