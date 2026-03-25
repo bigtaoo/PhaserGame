@@ -61,12 +61,16 @@ jobs:
       # 9. Build APK (for TapTap)
       - name: Build APK
         working-directory: android
-        run: ./gradlew assembleRelease
+        run: |
+          unset ANDROID_SDK_ROOT
+          ./gradlew assembleRelease
 
       # 10. Build AAB (for Google Play)
       - name: Build AAB
         working-directory: android
-        run: ./gradlew bundleRelease
+        run: |
+          unset ANDROID_SDK_ROOT
+          ./gradlew bundleRelease
 
       # 11. Upload artifacts
       - name: Upload APK
