@@ -69,6 +69,7 @@ jobs:
             -archivePath $PWD/build/App.xcarchive \
             DEVELOPMENT_TEAM=${{ secrets.APPLE_TEAM_ID }} \
             CODE_SIGN_STYLE=Manual \
+            PROVISIONING_PROFILE_SPECIFIER="${{ secrets.IOS_PROFILE_NAME }}" \
             CODE_SIGN_IDENTITY="Apple Distribution" \
             archive
 
