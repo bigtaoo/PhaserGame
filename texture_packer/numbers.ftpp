@@ -65,11 +65,6 @@
       "folder": ""
     },
     {
-      "name": "clock.png",
-      "path": "/Users/wangtao/Desktop/SumQuest/Art/clock.png",
-      "folder": ""
-    },
-    {
       "name": "disable.png",
       "path": "/Users/wangtao/Desktop/SumQuest/Art/disable.png",
       "folder": ""
@@ -87,11 +82,6 @@
     {
       "name": "music.png",
       "path": "/Users/wangtao/Desktop/SumQuest/Art/music.png",
-      "folder": ""
-    },
-    {
-      "name": "plus.png",
-      "path": "/Users/wangtao/Desktop/SumQuest/Art/plus.png",
       "folder": ""
     },
     {
@@ -136,12 +126,12 @@
     "savePath": "/Users/wangtao/Desktop/PhaserGame/src/assets",
     "width": 1024,
     "height": 1024,
-    "fixedSize": true,
-    "powerOfTwo": false,
+    "fixedSize": false,
+    "powerOfTwo": true,
     "padding": 2,
     "extrude": 0,
-    "allowRotation": true,
-    "allowTrim": true,
+    "allowRotation": false,
+    "allowTrim": false,
     "trimMode": "trim",
     "alphaThreshold": "0",
     "detectIdentical": true,
