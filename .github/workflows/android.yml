@@ -35,7 +35,8 @@ jobs:
 
       # 4. Install Gradle wrapper if needed
       - name: Ensure Gradle wrapper
-        run: cd android
+        run: |
+          cd android
           ./gradlew --version
 
       # 5. Install Node.js
