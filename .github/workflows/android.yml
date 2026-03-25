@@ -58,11 +58,19 @@ jobs:
       - name: Capacitor Sync
         run: npx cap sync android
 
+      - name: Decode Keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > release.keystore
+
       # 9. Build APK (for TapTap)
       - name: Build APK
         working-directory: android
         run: |
           unset ANDROID_SDK_ROOT
+          export KEYSTORE_FILE=$GITHUB_WORKSPACE/release.keystore
+          export KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}
+          export KEY_ALIAS=${{ secrets.KEY_ALIAS }}
+          export KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}
           ./gradlew assembleRelease
 
       # 10. Build AAB (for Google Play)
@@ -70,6 +78,10 @@ jobs:
         working-directory: android
         run: |
           unset ANDROID_SDK_ROOT
+          export KEYSTORE_FILE=$GITHUB_WORKSPACE/release.keystore
+          export KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}
+          export KEY_ALIAS=${{ secrets.KEY_ALIAS }}
+          export KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}
           ./gradlew bundleRelease
 
       # 11. Upload artifacts
