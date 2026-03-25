@@ -25,11 +25,6 @@ jobs:
       - name: Sync Capacitor
         run: npx cap sync ios
 
-      - name: Install CocoaPods
-        run: |
-          cd ios
-          pod install
-
       # 🔐 Setup signing
       - name: Setup keychain & import certificate
         env:
@@ -56,13 +51,18 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
+      - name: Resolve Swift Packages
+        run: |
+          cd ios/App
+          xcodebuild -resolvePackageDependencies -project App.xcodeproj
+
       # 🛠 Build IPA
       - name: Build IPA
         run: |
           cd ios/App
 
           xcodebuild \
-            -workspace App.xcworkspace \
+            -project App.xcodeproj \
             -scheme App \
             -configuration Release \
             -sdk iphoneos \
@@ -74,6 +74,7 @@ jobs:
             -archivePath $PWD/build/App.xcarchive \
             -exportOptionsPlist ExportOptions.plist \
             -exportPath $PWD/build
+
 
       # 🚀 Upload to TestFlight
       - name: Upload to TestFlight
