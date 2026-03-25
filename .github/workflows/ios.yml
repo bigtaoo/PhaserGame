@@ -25,10 +25,10 @@ jobs:
       - name: Sync Capacitor
         run: npx cap sync ios
 
-      - name: Install CocoaPods
-        run: |
-          cd ios/App
-          pod install
+      # - name: Install CocoaPods
+      #   run: |
+      #     cd ios/App
+      #     pod install
 
       # 🔐 Setup signing
       - name: Setup keychain & import certificate
