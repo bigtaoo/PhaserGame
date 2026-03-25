@@ -1,0 +1,82 @@
+name: Build Android App
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    name: Build Android
+    runs-on: ubuntu-latest
+
+    env:
+      ANDROID_SDK_ROOT: ${{ github.workspace }}/android-sdk
+      GRADLE_USER_HOME: ${{ github.workspace }}/.gradle
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Set up JDK
+      - name: Setup JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+
+      # 3. Install Android SDK tools
+      - name: Install Android SDK
+        run: |
+          mkdir -p $ANDROID_SDK_ROOT
+          curl -o sdk-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip
+          unzip sdk-tools.zip -d $ANDROID_SDK_ROOT/cmdline-tools
+          mv $ANDROID_SDK_ROOT/cmdline-tools/cmdline-tools $ANDROID_SDK_ROOT/cmdline-tools/latest
+          yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platform-tools" "platforms;android-34" "build-tools;34.0.0"
+
+      # 4. Install Gradle wrapper if needed
+      - name: Ensure Gradle wrapper
+        run: ./gradlew --version
+
+      # 5. Install Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      # 6. Install dependencies
+      - name: Install npm packages
+        run: npm install
+
+      # 7. Build Phaser game
+      - name: Build Phaser Web
+        run: npm run build
+
+      # 8. Copy web build to Capacitor
+      - name: Capacitor Sync
+        run: npx cap sync android
+
+      # 9. Build APK (for TapTap)
+      - name: Build APK
+        working-directory: android
+        run: ./gradlew assembleRelease
+
+      # 10. Build AAB (for Google Play)
+      - name: Build AAB
+        working-directory: android
+        run: ./gradlew bundleRelease
+
+      # 11. Upload artifacts
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release-apk
+          path: android/app/build/outputs/apk/release/app-release.apk
+
+      - name: Upload AAB
+        uses: actions/upload-artifact@v3
+        with:
+          name: app-release-aab
+          path: android/app/build/outputs/bundle/release/app-release.aab
