@@ -56,6 +56,17 @@ jobs:
           cd ios/App
           xcodebuild -resolvePackageDependencies -project App.xcodeproj
 
+      - name: Set app version
+        run: |
+          cd ios/App
+
+          # App version (e.g. 1.0.0)
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString 1.0.0" App/Info.plist
+
+          # Build number (increment every upload!)
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $GITHUB_RUN_NUMBER" App/Info.plist
+
+
       # 🛠 Build IPA
       - name: Build IPA
         run: |
