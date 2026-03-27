@@ -1,3 +1,9 @@
+import { isWeChat  } from './platforms';
+
+if (isWeChat())
+{
+    
+}
 import { GameScene } from './gameScene';
 import { LoadingScene } from './loadingScene';
 

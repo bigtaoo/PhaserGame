@@ -1,0 +1,1 @@
+export const isWeChat = () : boolean => { return TARGET=== 'wechat'; }
