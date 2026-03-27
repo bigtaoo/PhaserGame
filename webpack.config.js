@@ -1,10 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
+const webpack = require('webpack');
 // const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
   const isProd = argv.mode === 'production';
+  const target = env.TARGET || 'web';
 
   return {
     mode: isProd ? 'production' : 'development',
@@ -13,18 +15,27 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         { test: /\.ts$/, use: 'ts-loader', exclude: /node_modules/ },
-        { test: /\.(png|jpg|gif|webp|mp3|wav|ogg|json)$/i, type: 'asset/resource' },
+        { test: /\.(png|jpg|gif|webp|mp3|wav|ogg|json)$/i, type: 'asset/resource',
+          generator: {
+            filename: target === 'wechat'
+              ? 'assets/[name][ext]'  // keep original names
+              : 'assets/[name].[contenthash][ext]' // hash for web
+          }
+         },
         { test: /\.css$/i, use: ['style-loader', 'css-loader'] },
       ],
     },
     resolve: { extensions: ['.ts', '.js'] },
     output: {
-      filename: 'bundle.js', // main bundle
-      path: path.resolve(__dirname, 'dist'),
+      filename: target === 'wechat' ? 'game.js' : 'bundle.js', // main bundle
+      path: target === 'wechat' ? path.resolve(__dirname, 'wechatbuild') : path.resolve(__dirname, 'dist'),
       clean: true, // clean old files
     },
     plugins: [
       new HtmlWebpackPlugin({ template: './public/index.html' }),
+      new webpack.DefinePlugin({
+        TARGET: JSON.stringify(target)
+      }),
     //   new CopyPlugin({
     //     patterns: [
     //       { from: 'src/assets', to: 'assets' }, // copy all assets to dist/assets
