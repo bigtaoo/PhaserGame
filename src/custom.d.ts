@@ -6,3 +6,5 @@ declare module '*.wav';
 declare module '*.ogg';
 
 declare const TARGET: 'web' | 'wechat';
+
+declare const wx: any

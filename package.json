@@ -26,6 +26,7 @@
     "@capacitor/cli": "^8.2.0",
     "@capacitor/core": "^8.2.0",
     "@capacitor/ios": "^8.2.0",
+    "@iro/wechat-adapter": "^1.2.6",
     "phaser": "^3.90.0"
   },
   "devDependencies": {

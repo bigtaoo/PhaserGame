@@ -2,6 +2,7 @@ import bgImg from './assets/background.png';
 import bgMusicFile from './assets/music.ogg';
 import numbersJson from './assets/numbers.json'
 import numberPng from './assets/numbers.png';
+import { isWeChat } from './platforms';
 
 export class LoadingScene extends Phaser.Scene {
     constructor() {
@@ -9,9 +10,21 @@ export class LoadingScene extends Phaser.Scene {
     }
 
     preload(): void {
-        this.load.atlas('numbers', numberPng, numbersJson);
-        this.load.image('background', bgImg);
-        this.load.audio('music', bgMusicFile);
+        if (isWeChat())
+        {
+            // Wechat minigame
+            this.load.setBaseURL('');
+            this.load.atlas('numbers', 'assets/numbers.png', 'assets/numbers.json');
+            this.load.image('background', 'assets/background.png');
+            this.load.audio('')
+        }
+        else
+        {
+            // Web
+            this.load.atlas('numbers', numberPng, numbersJson);
+            this.load.image('background', bgImg);
+            this.load.audio('music', bgMusicFile);
+        }
 
         const width = this.cameras.main.width;
         const height = this.cameras.main.height;

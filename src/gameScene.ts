@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { AssetKeys } from './assetKeys';
 import { AssetManager } from './assetManager';
+import { isWeChat } from './platforms';
 
 export class GameScene extends Phaser.Scene {
     private player!: Phaser.GameObjects.Image;
@@ -19,8 +20,18 @@ export class GameScene extends Phaser.Scene {
         this.player = AssetManager.addImage(this, this.scale.width / 2, this.scale.height / 2, AssetKeys.num2);
 
         // Background music
-        this.bgMusic = this.sound.add(AssetKeys.music, { loop: true, volume: 0.2 });
-        // this.bgMusic.play();
+        if (isWeChat())
+        {
+            const bgm = wx.createInnerAudioContext();
+            bgm.src = 'assets/audio/bgm.ogg';
+            bgm.loop = true;
+            bgm.volume = 0.5;
+        }
+        else
+        {
+            this.bgMusic = this.sound.add(AssetKeys.music, { loop: true, volume: 0.2 });
+            // this.bgMusic.play();
+        }    
 
         // Click/tap input
         this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
